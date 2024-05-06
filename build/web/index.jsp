@@ -49,10 +49,11 @@
 
         <!-- Header -->
         <nav class="navbar navbar-expand-lg navbar-light shadow">
+            
             <div class="container d-flex justify-content-between align-items-center">
-
+                <h5>Liga Barrial</h5>
                 <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
-                    SF
+                    Semillitas del Futuro
                 </a>
 
                 <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -106,9 +107,7 @@
                             </div>
                             <div class="col-lg-6 mb-0 d-flex align-items-center">
                                 <div class="text-align-left align-self-center">
-                                    <h1 class="h1 text-success"><b>Liga</b> Barrial</h1>
-                                    <h3 class="h2">Semillitas del Futuro</h3>
-                                    <p>
+                                                                        <p>
                                         ¡Bienvenido a la Liga Barrial Semillitas del Futuro! Somos más que un torneo, somos una comunidad apasionada por el fútbol y el desarrollo integral de nuestros jóvenes. En nuestra liga, no solo se trata de marcar goles, sino de cultivar valores como el trabajo en equipo, la disciplina y el respeto. Con entrenadores comprometidos y un ambiente familiar, estamos sembrando las semillas del futuro, formando no solo grandes deportistas, sino también grandes personas. Únete a nosotros y sé parte de esta emocionante experiencia donde cada partido es una oportunidad para crecer y aprender
                                     </p>
                                 </div>

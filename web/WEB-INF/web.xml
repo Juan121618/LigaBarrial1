@@ -1,8 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
-         version="4.0">
+<web-app version="4.0" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
+    <servlet>
+        <servlet-name>GuardarUsuarioServlet</servlet-name>
+        <servlet-class>servlets.GuardarUsuarioServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditarUsuarioServlet</servlet-name>
+        <servlet-class>servlets.EditarUsuarioServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GuardarEdicionUsuarioServlet</servlet-name>
+        <servlet-class>servlets.GuardarEdicionUsuarioServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EliminarUsuarioServlet</servlet-name>
+        <servlet-class>servlets.EliminarUsuarioServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GuardarUsuarioServlet</servlet-name>
+        <url-pattern>/GuardarUsuarioServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditarUsuarioServlet</servlet-name>
+        <url-pattern>/EditarUsuarioServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GuardarEdicionUsuarioServlet</servlet-name>
+        <url-pattern>/GuardarEdicionUsuarioServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarUsuarioServlet</servlet-name>
+        <url-pattern>/EliminarUsuarioServlet</url-pattern>
+    </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
