@@ -35,7 +35,7 @@ public class LoginServlet extends HttpServlet {
             
             // Redireccionar según el resultado de la autenticación
             if (autenticado) {
-                response.sendRedirect("inicio.jsp"); // Página de inicio después de iniciar sesión
+                response.sendRedirect("Clasificacion.jsp"); // Página de inicio después de iniciar sesión
             } else {
                 out.println("<script>alert('Usuario o contraseña incorrectos');</script>");
                 request.getRequestDispatcher("login.jsp").include(request, response); // Volver a la página de login
