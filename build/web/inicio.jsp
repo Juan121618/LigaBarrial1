@@ -43,7 +43,7 @@
     </head>
 
     <body>
-        
+
 
 
         <!-- Header -->
@@ -73,47 +73,57 @@
                             </li>
                         </ul>
                     </div>
-                  
+
                 </div>
 
             </div>
         </nav>
         <!-- Close Header -->
-      <% if (tipoUsuario.equals("usuarios")) { %>
-       <div class="row">
-                <div class="col-12 col-md-4 p-5 mt-3">
-                    <a href="Clasificacion.jsp"><img src="./assets/img/category_img_01.png" class="rounded-circle img-fluid border"></a>
-                    <h5 class="text-center mt-3 mb-3">Administrador</h5>
-                    <p class="text-center"><a class="btn btn-success" href="Clasificacion.jsp">Ingresar</a></p>
-                </div>
-                <div class="col-12 col-md-4 p-5 mt-3">
-                    <a href="Representante.jsp"><img src="./assets/img/category_img_02.png" class="rounded-circle img-fluid border"></a>
-                    <h2 class="h5 text-center mt-3 mb-3">Representante</h2>
-                    <p class="text-center"><a class="btn btn-success" href="Representante.jsp">Ingresar</a></p>
-                </div>
-                <div class="col-12 col-md-4 p-5 mt-3">
-                    <a href="login.jsp"><img src="./assets/img/category_img_03.png" class="rounded-circle img-fluid border"></a>
-                    <h2 class="h5 text-center mt-3 mb-3">Digitador</h2>
-                    <p class="text-center"><a class="btn btn-success" href="login.jsp">Ingresar</a></p>
-                </div>
-            </div>
-    <% } else if (tipoUsuario.equals("representantes")) { %>
+        <% if (tipoUsuario.equals("usuarios")) { %>
         <div class="row">
-                
-                <div class="col-12 col-md-4 p-5 mt-3">
-                    <a href="Representante.jsp"><img src="./assets/img/category_img_02.png" class="rounded-circle img-fluid border"></a>
-                    <h2 class="h5 text-center mt-3 mb-3">Representante</h2>
-                    <p class="text-center"><a class="btn btn-success" href="Representante.jsp">Ingresar</a></p>
-                </div>
-                <div class="col-12 col-md-4 p-5 mt-3">
-                    <a href="login.jsp"><img src="./assets/img/category_img_03.png" class="rounded-circle img-fluid border"></a>
-                    <h2 class="h5 text-center mt-3 mb-3">Digitador</h2>
-                    <p class="text-center"><a class="btn btn-success" href="login.jsp">Ingresar</a></p>
-                </div>
+            <div class="col-12 col-md-4 p-5 mt-3">
+                <a href="Clasificacion.jsp"><img src="./assets/img/category_img_01.png" class="rounded-circle img-fluid border"></a>
+                <h5 class="text-center mt-3 mb-3">Administrador</h5>
+                <p class="text-center"><a class="btn btn-success" href="Clasificacion.jsp">Ingresar</a></p>
             </div>
-    <% } %>
+            <div class="col-12 col-md-4 p-5 mt-3">
+                <a href="Representante.jsp"><img src="./assets/img/category_img_02.png" class="rounded-circle img-fluid border"></a>
+                <h2 class="h5 text-center mt-3 mb-3">Representante</h2>
+                <p class="text-center"><a class="btn btn-success" href="Representante.jsp">Ingresar</a></p>
+            </div>
+            <div class="col-12 col-md-4 p-5 mt-3">
+                <a href="login.jsp"><img src="./assets/img/category_img_03.png" class="rounded-circle img-fluid border"></a>
+                <h2 class="h5 text-center mt-3 mb-3">Digitador</h2>
+                <p class="text-center"><a class="btn btn-success" href="login.jsp">Ingresar</a></p>
+            </div>
+            <div class="col-12 col-md-4 p-5 mt-3">
+                <a href="Equipos.jsp"><img src="./assets/img/category_img_05.png" class="rounded-circle img-fluid border"></a>
+                <h2 class="h5 text-center mt-3 mb-3">Equipos</h2>
+                <p class="text-center"><a class="btn btn-success" href="Equipos.jsp">Ingresar</a></p>
+            </div>
+        </div>
+        <% } else if (tipoUsuario.equals("representantes")) { %>
+        <div class="row">
 
-                <!-- Start Footer -->
+            <div class="col-12 col-md-4 p-5 mt-3">
+                <a href="Representante.jsp"><img src="./assets/img/category_img_02.png" class="rounded-circle img-fluid border"></a>
+                <h2 class="h5 text-center mt-3 mb-3">Representante</h2>
+                <p class="text-center"><a class="btn btn-success" href="Representante.jsp">Ingresar</a></p>
+            </div>
+            <div class="col-12 col-md-4 p-5 mt-3">
+                <a href="Equipos.jsp"><img src="./assets/img/category_img_05.png" class="rounded-circle img-fluid border"></a>
+                <h2 class="h5 text-center mt-3 mb-3">Equipos</h2>
+                <p class="text-center"><a class="btn btn-success" href="Equipos.jsp">Ingresar</a></p>
+            </div>
+            <div class="col-12 col-md-4 p-5 mt-3">
+                <a href="login.jsp"><img src="./assets/img/category_img_03.png" class="rounded-circle img-fluid border"></a>
+                <h2 class="h5 text-center mt-3 mb-3">Digitador</h2>
+                <p class="text-center"><a class="btn btn-success" href="login.jsp">Ingresar</a></p>
+            </div>
+        </div>
+        <% }%>
+
+        <!-- Start Footer -->
         <footer class="bg-dark" id="tempaltemo_footer">
             <div class="container">
                 <div class="row">
@@ -136,7 +146,7 @@
                         </ul>
                     </div>
 
-                   
+
 
                     <div class="col-md-4 pt-5">
                         <h2 class="h2 text-light border-bottom pb-3 border-light">Navega</h2>
@@ -170,7 +180,7 @@
                             </li>
                         </ul>
                     </div>
-                    
+
                 </div>
             </div>
 
@@ -180,7 +190,7 @@
                         <div class="col-12">
                             <p class="text-left text-light">
                                 Copyright &copy; 2024 Juan Valdez
-                               
+
                             </p>
                         </div>
                     </div>
@@ -199,7 +209,7 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    
+
         <!-- End Script -->
     </body>
 

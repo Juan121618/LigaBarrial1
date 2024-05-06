@@ -1,5 +1,6 @@
-<%@page import="Modelo.Representante"%>
-<%@page import="DAO.RepresentanteDAO"%>
+<%@page import="DAO.EquiposDAO"%>
+<%@page import="Modelo.Equipos"%>
+<%@page import="java.util.Iterator"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -8,7 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Representantes</title>
+    <title>Equipos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
@@ -20,40 +21,47 @@
     <!-- Begin page content -->
     <main class="flex-shrink-0">
         <div class="container">
-            <h3 class="my-3" id="titulo">Representantes</h3>
+            <h3 class="my-3" id="titulo">Equipos</h3>
 
-            <a href="nuevoRepresentante.jsp" class="btn btn-success">Agregar</a>
+            <a href="nuevoEquipo.jsp" class="btn btn-success">Agregar</a>
 
             <table class="table table-hover table-bordered my-3" aria-describedby="titulo">
                 <thead class="table-dark">
                     <tr>
-                        <th scope="col">Id</th>
+                        <th scope="col">ID</th>
                         <th scope="col">Nombre</th>
-                        <th scope="col">Usuario</th>
-                        <th scope="col">Contraseña</th>
+                        <th scope="col">Año de Fundación</th>
+                        <th scope="col">Colores</th>
+                        <th scope="col">Imagen de Escudo</th>
+                        <th scope="col">ID del Representante</th>
                         <th scope="col">Opciones</th>
                     </tr>
                 </thead>
 
                 <tbody>
                     <% 
-                    RepresentanteDAO dao = new RepresentanteDAO();
-                    List<Representante> representantes = dao.listarrepresentante();
-                    for (Representante representante : representantes) {
+                    EquiposDAO dao = new EquiposDAO();
+                    List<Equipos> list = dao.listarEquiposConNombreRepresentante();
+                    Iterator<Equipos> iter = list.iterator();
+                    Equipos equipo = null;
+                    while(iter.hasNext()){
+                        equipo = iter.next();
                     %>
                     <tr>
-                        <td><%= representante.getId() %></td>
-                        <td><%= representante.getNombre() %></td>
-                        <td><%= representante.getUsuario() %></td>
-                        <td><%= representante.getContrasena() %></td>
+                        <td><%=equipo.getId()%></td>
+                        <td><%=equipo.getNombre()%></td>
+                        <td><%=equipo.getAnoFundacion()%></td>
+                        <td><%=equipo.getColores()%></td>
+                        <td><img src="<%=equipo.getImagenEscudo()%>" alt="Escudo del Equipo" width="100"></td>
+                        <td><%=equipo.getIdRepresentante()%></td>
+                        <td><%=equipo.getNombreRepresentante()%></td>
                         <td>
-                            <a href="editarRepresentante.jsp?id=<%= representante.getId() %>"
-                                class="btn btn-warning btn-sm me-2">Editar</a>
+                            <a href="editarEquipo.jsp?id=<%=equipo.getId()%>" class="btn btn-warning btn-sm me-2">Editar</a>
                             <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
-                                data-bs-target="#eliminaModal" data-bs-id="<%= representante.getId() %>">Eliminar</button>
+                                data-bs-target="#eliminaModal" data-bs-id="<%=equipo.getId()%>">Eliminar</button>
                         </td>
                     </tr>
-                    <% } %>
+                    <%}%>
                 </tbody>
             </table>
             <a href="inicio.jsp" class="btn btn-secondary">Regresar</a>
@@ -74,11 +82,11 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p>¿Desea eliminar este representante?</p>
+                    <p>¿Desea eliminar este registro?</p>
                 </div>
                 <div class="modal-footer">
-                    <form id="form-elimina" action="EliminarRepresentanteServlet" method="post">
-                        <input type="hidden" name="idRepresentante" id="idRepresentante">
+                    <form id="form-elimina" action="EliminarEquipoServlet" method="post">
+                        <input type="hidden" name="idEquipo" id="idEquipo">
                         <input type="hidden" name="_method" value="delete">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                         <button type="submit" class="btn btn-danger">Eliminar</button>
@@ -103,8 +111,8 @@
 
                 // Update the modal's content.
                 const form = eliminaModal.querySelector('#form-elimina');
-                const idRepresentanteInput = form.querySelector('#idRepresentante');
-                idRepresentanteInput.value = id;
+                const idEquipoInput = form.querySelector('#idEquipo');
+                idEquipoInput.value = id;
             });
         }
     </script>

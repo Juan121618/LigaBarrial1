@@ -1,9 +1,6 @@
 <%@page import="Modelo.Representante"%>
 <%@page import="DAO.RepresentanteDAO"%>
-<%@page import="java.util.Iterator"%>
 <%@page import="java.util.List"%>
-<%@page import="Modelo.Clasificacion"%>
-<%@page import="DAO.ClasificacionDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es" class="h-100">
@@ -11,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Representante</title>
+    <title>Representantes</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
@@ -41,27 +38,25 @@
                 <tbody>
                     <% 
                     RepresentanteDAO dao = new RepresentanteDAO();
-                    List<Representante> list=dao.listarrepresentante();
-                    Iterator<Representante> iter=list.iterator();
-                    Representante per=null;
-                    while(iter.hasNext()){
-                        per = iter.next();
+                    List<Representante> representantes = dao.listarrepresentante();
+                    for (Representante representante : representantes) {
                     %>
                     <tr>
-                        <td><%=per.getId()%></td>
-                        <td><%=per.getNombre()%></td>
-                        <td><%=per.getUsuario()%></td>
-                        <td><%=per.getContrasena()%></td>
+                        <td><%= representante.getId() %></td>
+                        <td><%= representante.getNombre() %></td>
+                        <td><%= representante.getUsuario() %></td>
+                        <td><%= representante.getContrasena() %></td>
                         <td>
-                            <a href="editarRepresentante.jsp?id=<%=per.getId()%>" class="btn btn-warning btn-sm me-2">Editar</a>
+                            <a href="editarRepresentante.jsp?id=<%= representante.getId() %>"
+                                class="btn btn-warning btn-sm me-2">Editar</a>
                             <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
-                                data-bs-target="#eliminaModal" data-bs-id="<%=per.getId()%>">Eliminar</button>
+                                data-bs-target="#eliminaModal" data-bs-id="<%= representante.getId() %>">Eliminar</button>
                         </td>
                     </tr>
-                    <%}%>
+                    <% } %>
                 </tbody>
             </table>
-                 <a href="inicio.jsp" class="btn btn-secondary">Regresar</a>
+            <a href="inicio.jsp" class="btn btn-secondary">Regresar</a>
         </div>
     </main>
 
@@ -79,11 +74,11 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p>¿Desea eliminar este registro?</p>
+                    <p>¿Desea eliminar este representante?</p>
                 </div>
                 <div class="modal-footer">
                     <form id="form-elimina" action="EliminarRepresentanteServlet" method="post">
-                        <input type="hidden" name="idUsuario" id="idUsuario">
+                        <input type="hidden" name="idRepresentante" id="idRepresentante">
                         <input type="hidden" name="_method" value="delete">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                         <button type="submit" class="btn btn-danger">Eliminar</button>
@@ -108,8 +103,8 @@
 
                 // Update the modal's content.
                 const form = eliminaModal.querySelector('#form-elimina');
-                const idUsuarioInput = form.querySelector('#idUsuario');
-                idUsuarioInput.value = id;
+                const idRepresentanteInput = form.querySelector('#idRepresentante');
+                idRepresentanteInput.value = id;
             });
         }
     </script>

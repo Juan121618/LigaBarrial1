@@ -28,6 +28,10 @@
         <servlet-name>EliminarRepresentanteServlet</servlet-name>
         <servlet-class>servlets.EliminarRepresentanteServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EquipoServlet</servlet-name>
+        <servlet-class>servlets.EquipoServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>GuardarUsuarioServlet</servlet-name>
         <url-pattern>/GuardarUsuarioServlet</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>EliminarRepresentanteServlet</servlet-name>
         <url-pattern>/EliminarRepresentanteServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EquipoServlet</servlet-name>
+        <url-pattern>/EquipoServlet</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>

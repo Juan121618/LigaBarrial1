@@ -64,14 +64,14 @@
                     <div class="flex-fill">
                         <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                             <li class="nav-item">
-                                <a class="nav-link" href="index.html">Inicio</a>
+                                <a class="nav-link" href="index.jsp">Inicio</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="about.html">Acerca</a>
+                                <a class="nav-link" href="about.jsp">Acerca</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="contact.html">Contacto</a>
+                                <a class="nav-link" href="contact.jsp">Contacto</a>
                             </li>
                         </ul>
                     </div>
@@ -219,7 +219,7 @@
                         <h2 class="h2 text-light border-bottom pb-3 border-light">Navega</h2>
                         <ul class="list-unstyled text-light footer-link-list">
                             <li><a class="text-decoration-none" href="#">Inicio</a></li>
-                            <li><a class="text-decoration-none" href="#">Acerca</a></li>
+                            <li><a class="text-decoration-none" href="about.jsp">Acerca</a></li>
                             <li><a class="text-decoration-none" href="#">Direcciones</a></li>
                             <li><a class="text-decoration-none" href="#">Contacto</a></li>
                         </ul>
