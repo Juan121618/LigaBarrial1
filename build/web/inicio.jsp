@@ -1,6 +1,24 @@
+<%@ page import="java.util.List" %>
+<%@ page import="DAO.ClasificacionDAO" %>
+<%@ page import="Modelo.Clasificacion" %>
+<%@ page import="DAO.RepresentanteDAO" %>
+<%@ page import="Modelo.Representante" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    String tipoUsuario = (String) request.getSession().getAttribute("tipoUsuario");
+
+    if (tipoUsuario == null) {
+        // Si no hay ningún tipo de usuario en la sesión, redireccionar a la página de login
+        response.sendRedirect("login.jsp");
+    }
+%>
+
+
 <html lang="en">
 
     <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <title>Liga Barrial Semillitas del Futuro</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,33 +43,14 @@
     </head>
 
     <body>
-        <!-- Start Top Nav -->
-        <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
-            <div class="container text-light">
-                <div class="w-100 d-flex justify-content-between">
-                    <div>
-                        <i class="fa fa-envelope mx-2"></i>
-                        <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">info@company.com</a>
-                        <i class="fa fa-phone mx-2"></i>
-                        <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">010-020-0340</a>
-                    </div>
-                    <div>
-                        <a class="text-light" href="https://fb.com/templatemo" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
-                        <a class="text-light" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
-                        <a class="text-light" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter fa-sm fa-fw me-2"></i></a>
-                        <a class="text-light" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin fa-sm fa-fw"></i></a>
-                    </div>
-                </div>
-            </div>
-        </nav>
-        <!-- Close Top Nav -->
+        
 
 
         <!-- Header -->
         <nav class="navbar navbar-expand-lg navbar-light shadow">
             <div class="container d-flex justify-content-between align-items-center">
 
-                <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
+                <a class="navbar-brand text-success logo h1 align-self-center" href="index.jsp">
                     SF
                 </a>
 
@@ -63,69 +62,56 @@
                     <div class="flex-fill">
                         <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                             <li class="nav-item">
-                                <a class="nav-link" href="index.html">Inicio</a>
+                                <a class="nav-link" href="index.jsp">Inicio</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="about.html">Acerca</a>
+                                <a class="nav-link" href="about.jsp">Acerca</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="contact.html">Contacto</a>
+                                <a class="nav-link" href="contact.jsp">Contacto</a>
                             </li>
                         </ul>
                     </div>
-                    <div class="navbar align-self-center d-flex">
-                        <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
-                            <div class="input-group">
-                                <input type="text" class="form-control" id="inputMobileSearch" placeholder="Search ...">
-                                <div class="input-group-text">
-                                    <i class="fa fa-fw fa-search"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                  
                 </div>
 
             </div>
         </nav>
         <!-- Close Header -->
-
-       
-
-        <!-- Start Categories of The Month -->
-        <section class="container py-5">
-            <div class="row text-center pt-3">
-                <div class="col-lg-6 m-auto">
-                    <h1 class="h1">Que deseas modificar?</h1>
-                </div>
-            </div>
-            <div class="row">
+      <% if (tipoUsuario.equals("usuarios")) { %>
+       <div class="row">
                 <div class="col-12 col-md-4 p-5 mt-3">
                     <a href="Clasificacion.jsp"><img src="./assets/img/category_img_01.png" class="rounded-circle img-fluid border"></a>
                     <h5 class="text-center mt-3 mb-3">Administrador</h5>
                     <p class="text-center"><a class="btn btn-success" href="Clasificacion.jsp">Ingresar</a></p>
                 </div>
                 <div class="col-12 col-md-4 p-5 mt-3">
-                    <a href="inicio.jsp"><img src="./assets/img/category_img_02.png" class="rounded-circle img-fluid border"></a>
+                    <a href="Representante.jsp"><img src="./assets/img/category_img_02.png" class="rounded-circle img-fluid border"></a>
                     <h2 class="h5 text-center mt-3 mb-3">Representante</h2>
-                    <p class="text-center"><a class="btn btn-success" href="inicio.jsp">Ingresar</a></p>
+                    <p class="text-center"><a class="btn btn-success" href="Representante.jsp">Ingresar</a></p>
                 </div>
-                
                 <div class="col-12 col-md-4 p-5 mt-3">
-                    <a href="inicio.jsp"><img src="./assets/img/category_img_03.png" class="rounded-circle img-fluid border"></a>
+                    <a href="login.jsp"><img src="./assets/img/category_img_03.png" class="rounded-circle img-fluid border"></a>
                     <h2 class="h5 text-center mt-3 mb-3">Digitador</h2>
-                    <p class="text-center"><a class="btn btn-success" href="inicio.jsp">Ingresar</a></p>
-                </div>
-                
-                <div class="col-12 col-md-4 p-5 mt-3">
-                    <a href="inicio.jsp"><img src="./assets/img/category_img_04.png" class="rounded-circle img-fluid border"></a>
-                    <h2 class="h5 text-center mt-3 mb-3">Actividades</h2>
-                    <p class="text-center"><a class="btn btn-success" href="inicio.jsp">Ingresar</a></p>
+                    <p class="text-center"><a class="btn btn-success" href="login.jsp">Ingresar</a></p>
                 </div>
             </div>
-        </section>
-        <!-- End Categories of The Month -->
-
+    <% } else if (tipoUsuario.equals("representantes")) { %>
+        <div class="row">
+                
+                <div class="col-12 col-md-4 p-5 mt-3">
+                    <a href="Representante.jsp"><img src="./assets/img/category_img_02.png" class="rounded-circle img-fluid border"></a>
+                    <h2 class="h5 text-center mt-3 mb-3">Representante</h2>
+                    <p class="text-center"><a class="btn btn-success" href="Representante.jsp">Ingresar</a></p>
+                </div>
+                <div class="col-12 col-md-4 p-5 mt-3">
+                    <a href="login.jsp"><img src="./assets/img/category_img_03.png" class="rounded-circle img-fluid border"></a>
+                    <h2 class="h5 text-center mt-3 mb-3">Digitador</h2>
+                    <p class="text-center"><a class="btn btn-success" href="login.jsp">Ingresar</a></p>
+                </div>
+            </div>
+    <% } %>
 
                 <!-- Start Footer -->
         <footer class="bg-dark" id="tempaltemo_footer">
@@ -133,7 +119,7 @@
                 <div class="row">
 
                     <div class="col-md-4 pt-5">
-                        <h2 class="h2 text-success border-bottom pb-3 border-light logo">Informaci�n</h2>
+                        <h2 class="h2 text-success border-bottom pb-3 border-light logo">Información</h2>
                         <ul class="list-unstyled text-light footer-link-list">
                             <li>
                                 <i class="fas fa-map-marker-alt fa-fw"></i>
@@ -210,7 +196,13 @@
         <script src="assets/js/bootstrap.bundle.min.js"></script>
         <script src="assets/js/templatemo.js"></script>
         <script src="assets/js/custom.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
         <!-- End Script -->
     </body>
 
 </html>
+
+

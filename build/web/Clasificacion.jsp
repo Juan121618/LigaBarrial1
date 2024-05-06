@@ -59,6 +59,7 @@
                     <%}%>
                 </tbody>
             </table>
+                <a href="inicio.jsp" class="btn btn-secondary">Regresar</a>
         </div>
     </main>
 

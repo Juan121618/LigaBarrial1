@@ -54,7 +54,7 @@
         <nav class="navbar navbar-expand-lg navbar-light shadow">
             <div class="container d-flex justify-content-between align-items-center">
 
-                <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
+                <a class="navbar-brand text-success logo h1 align-self-center" href="index.jsp">
                     SF
                 </a>
 
@@ -66,14 +66,14 @@
                     <div class="flex-fill">
                         <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                             <li class="nav-item">
-                                <a class="nav-link" href="index.html">Inicio</a>
+                                <a class="nav-link" href="index.jsp">Inicio</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="about.html">Acerca</a>
+                                <a class="nav-link" href="about.jsp">Acerca</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="contact.html">Contacto</a>
+                                <a class="nav-link" href="contact.jsp">Contacto</a>
                             </li>
                         </ul>
                     </div>

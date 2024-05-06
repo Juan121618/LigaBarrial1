@@ -1,3 +1,5 @@
+<%@page import="Modelo.Representante"%>
+<%@page import="DAO.RepresentanteDAO"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.List"%>
 <%@page import="Modelo.Clasificacion"%>
@@ -9,7 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Empresa - Clasificación</title>
+    <title>Representante</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
@@ -21,9 +23,9 @@
     <!-- Begin page content -->
     <main class="flex-shrink-0">
         <div class="container">
-            <h3 class="my-3" id="titulo">Administradores</h3>
+            <h3 class="my-3" id="titulo">Representantes</h3>
 
-            <a href="nuevoUsuario.jsp" class="btn btn-success">Agregar</a>
+            <a href="nuevoRepresentante.jsp" class="btn btn-success">Agregar</a>
 
             <table class="table table-hover table-bordered my-3" aria-describedby="titulo">
                 <thead class="table-dark">
@@ -38,10 +40,10 @@
 
                 <tbody>
                     <% 
-                    ClasificacionDAO dao = new ClasificacionDAO();
-                    List<Clasificacion> list=dao.listarclasificacion();
-                    Iterator<Clasificacion> iter=list.iterator();
-                    Clasificacion per=null;
+                    RepresentanteDAO dao = new RepresentanteDAO();
+                    List<Representante> list=dao.listarrepresentante();
+                    Iterator<Representante> iter=list.iterator();
+                    Representante per=null;
                     while(iter.hasNext()){
                         per = iter.next();
                     %>
@@ -51,7 +53,7 @@
                         <td><%=per.getUsuario()%></td>
                         <td><%=per.getContrasena()%></td>
                         <td>
-                            <a href="editarUsuario.jsp?id=<%=per.getId()%>" class="btn btn-warning btn-sm me-2">Editar</a>
+                            <a href="editarRepresentante.jsp?id=<%=per.getId()%>" class="btn btn-warning btn-sm me-2">Editar</a>
                             <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
                                 data-bs-target="#eliminaModal" data-bs-id="<%=per.getId()%>">Eliminar</button>
                         </td>
@@ -59,7 +61,7 @@
                     <%}%>
                 </tbody>
             </table>
-                <a href="inicio.jsp" class="btn btn-secondary">Regresar</a>
+                 <a href="inicio.jsp" class="btn btn-secondary">Regresar</a>
         </div>
     </main>
 
@@ -80,7 +82,7 @@
                     <p>¿Desea eliminar este registro?</p>
                 </div>
                 <div class="modal-footer">
-                    <form id="form-elimina" action="EliminarUsuarioServlet" method="post">
+                    <form id="form-elimina" action="EliminarRepresentanteServlet" method="post">
                         <input type="hidden" name="idUsuario" id="idUsuario">
                         <input type="hidden" name="_method" value="delete">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>

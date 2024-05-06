@@ -5,7 +5,9 @@
 package servlets;
 
 import DAO.ClasificacionDAO;
+import DAO.RepresentanteDAO;
 import Modelo.Clasificacion;
+import Modelo.Representante;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -17,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Juan
  */
-public class EditarUsuarioServlet extends HttpServlet {
+public class GuardarRepresentanteServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,25 +33,28 @@ public class EditarUsuarioServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try {
-            int idUsuario = Integer.parseInt(request.getParameter("id"));
-            ClasificacionDAO dao = new ClasificacionDAO();
-            Clasificacion usuarioEditar = dao.obtenerUsuarioPorId(idUsuario);
-            if(usuarioEditar != null) {
-                request.setAttribute("usuarioEditar", usuarioEditar);
-                request.getRequestDispatcher("editarUsuario.jsp").forward(request, response);
+        try (PrintWriter out = response.getWriter()) {
+            // Obtener los parámetros del formulario
+            String nombre = request.getParameter("nombre");
+            String usuario = request.getParameter("usuario");
+            String contrasena = request.getParameter("contrasena");
+            
+            // Guardar el usuario en la base de datos
+            RepresentanteDAO dao = new RepresentanteDAO();
+            Representante nuevoRepresentante = new Representante(0, nombre, usuario, contrasena); // Suponiendo que el ID es autogenerado
+            boolean guardadoExitoso = dao.guardarRepresentante(nuevoRepresentante);
+            
+            // Mostrar mensaje de guardado exitoso
+            if (guardadoExitoso) {
+                out.println("<script>alert('Guardado exitosamente');</script>");
             } else {
-                // Manejar el caso en el que no se encuentra ningún usuario con el ID proporcionado
-                response.sendRedirect("error.jsp");
+                out.println("<script>alert('Error al guardar usuario');</script>");
             }
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-            response.sendRedirect("error.jsp");
+            
+            // Volver a la página de nuevoUsuario.jsp
+            request.getRequestDispatcher("nuevoRepresentante.jsp").include(request, response);
         }
-}
-
-    
-
+    }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
