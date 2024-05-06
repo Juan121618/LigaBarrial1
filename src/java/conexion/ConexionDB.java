@@ -20,7 +20,7 @@ public class ConexionDB {
         Properties properties = new Properties();
         properties.setProperty("user", "root");
         properties.setProperty("password", "1234");
-        String url = "jdbc:mysql://localhost/ligasemillitas?serverTimezone=America/Guayaquil";
+        String url = "jdbc:mysql://localhost/ligasemillitas1?serverTimezone=America/Guayaquil";
         
         try {
             Class.forName("com.mysql.jdbc.Driver");
